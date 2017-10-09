@@ -1,5 +1,4 @@
 package fracCalc;
-import java.io.InputStream;
 import java.util.Scanner;
 public class FracCalc
 {
@@ -8,7 +7,8 @@ public class FracCalc
 		// TODO: Read the input from the user and call produceAnswer
 		// with that input, printing the result
 		Scanner console = new Scanner(System.in);
-
+		String input = console.nextLine();
+		System.out.println(produceAnswer(input));
 	}
 
 	// ** IMPORTANT ** DO NOT DELETE THIS METHOD.
