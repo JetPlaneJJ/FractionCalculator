@@ -24,13 +24,17 @@ public class FracCalc
 	// The method should return the result of the fraction after it has been calculated
 	//      e.g. return ==> "1_1/4"
 	
-	public static String produceAnswer(String input)
+	public static int produceAnswer(String input)
 	{
 		// TODO: Implement this method to produce and return the solution to the input
 		// produceAnswer breaks up that line of input into three Strings
 		// the first operand (fraction), the operator (+ - * /), and the second operand (fraction).
 		// Each of these Strings should be stored in variables inside produceAnswer.  
-		return "";
+		String operand = input.substring(0, 3);
+		String operator = input.substring(3, 4);
+		String operand2 = input.substring(4, 6);
+		int result = Integer.parseInt(operand);
+		return result;
 	}
 
 	// TODO: Fill in the space below with any helper methods that you think you will need
