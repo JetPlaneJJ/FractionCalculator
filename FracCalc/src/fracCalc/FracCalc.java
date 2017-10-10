@@ -30,9 +30,9 @@ public class FracCalc
 		// produceAnswer breaks up that line of input into three Strings
 		// the first operand (fraction), the operator (+ - * /), and the second operand (fraction).
 		// Each of these Strings should be stored in variables inside produceAnswer.  
-		String operand = input.substring(0, 3);
-		String operator = input.substring(3, 4);
-		String operand2 = input.substring(4, 6);
+		String operand = input.substring(0, input.indexOf(" "));	
+		String operator = input.substring(input.indexOf(" ") + 1, input.indexOf(" ", input.indexOf(" "))); //use input.indexOf(start value, end value)????? FIX DIS
+		String operand2 = input.substring(input.indexOf(" "), input.length()-1);
 		int result = Integer.parseInt(operand);
 		return result;
 	}
