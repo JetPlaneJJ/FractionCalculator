@@ -10,10 +10,8 @@ public class FracCalc
 		String input = console.nextLine();
 		produceAnswer(input);
 		System.out.println(produceAnswer(input));
-		else //this causes program to quit (Check 2)
-		{
-			
-		}
+		
+		System.exit(0); //while Statements, then exit when user types "quit"
 	}
 
 	// ** IMPORTANT ** DO NOT DELETE THIS METHOD.
