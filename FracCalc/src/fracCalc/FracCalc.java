@@ -8,6 +8,7 @@ public class FracCalc
 		// with that input, printing the result
 		Scanner console = new Scanner(System.in);
 		String input = console.nextLine();
+		produceAnswer(input);
 		System.out.println(produceAnswer(input));
 	}
 
