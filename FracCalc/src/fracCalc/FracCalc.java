@@ -32,9 +32,9 @@ public class FracCalc
 		// the first operand (fraction), the operator (+ - * /), and the second operand (fraction).
 		// Each of these Strings should be stored in variables inside produceAnswer.  
 		int space = input.indexOf(" ");
-		String operand = input.substring(0, space);	
-		String operator = input.substring(space + 1, space + 2); 
-		String operand2 = input.substring(space + 3, input.length()-1);
+		String operand = input.substring(0, space+1);	
+		String operator = input.substring(space + 1, space + 3); 
+		String operand2 = input.substring(space + 3, input.length());
 		return operand2;
 	}
 
