@@ -12,7 +12,7 @@ public class FracCalc
 		{
 			System.exit(0); 
 		}
-		while (!input.equals("quit"))
+		while (!input.equals("quit")) //POSSIBLY FIX THIS???
 		{
 			produceAnswer(input);
 			System.out.println(produceAnswer(input));
