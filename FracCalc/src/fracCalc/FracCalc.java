@@ -74,7 +74,7 @@ public class FracCalc
 		//operand2 section
 		int op2w;
 		int op2n;
-		int op2d
+		int op2d;
 		if (operand2.indexOf("_") > -1) //if mixed fraction
 		{
 			op2w = Integer.parseInt(operand.substring(0, operand.indexOf("_")));
