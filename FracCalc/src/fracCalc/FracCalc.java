@@ -4,6 +4,7 @@ public class FracCalc
 {
 	public static void main(String[] args)
 	{
+		System.out.println("Type an expression: ");
 		// TODO: Read the input from the user and call produceAnswer
 		// with that input, printing the result
 		Scanner console = new Scanner(System.in);
