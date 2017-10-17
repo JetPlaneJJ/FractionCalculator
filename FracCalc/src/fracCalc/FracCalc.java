@@ -10,7 +10,7 @@ public class FracCalc
 		String input = console.nextLine();
 		if (input.equals("quit")) //while Statements, then exit when user types "quit"
 		{
-			System.exit(0); 
+			return;
 		}
 		else //POSSIBLY FIX THIS??? ????????????????????????????
 		{
@@ -37,10 +37,35 @@ public class FracCalc
 		// produceAnswer breaks up that line of input into three Strings
 		// the first operand (fraction), the operator (+ - * /), and the second operand (fraction).
 		// Each of these Strings should be stored in variables inside produceAnswer.  
+		
+		//Checkpoint 1 stuff
 		int space = input.indexOf(" ");
 		String operand = input.substring(0, space+1);	
 		String operator = input.substring(space + 1, space + 3); 
 		String operand2 = input.substring(space + 3, input.length());
+		
+		//Checkpoint 2 stuff
+		
+		//operand1 section
+		if (operand.indexOf("_") > -1) //if mixed fraction
+		{
+			int op1w = 0;
+			int op1n = Integer.parseInt(operand.substring(0));
+			int op1d = 0;
+		}
+		else if (operand.indexOf("_") == -1 && operand.indexOf("/") != 0) //if the format is like: 10/4, not a mixed fraction
+		{
+			int slash = operand.indexOf("/");
+			int op1w = 0;
+			int op1n = Integer.parseInt(operand.substring(0));
+			int op1d = 0;
+		}
+		else //first operand if only whole number
+		{
+			int op1w = Integer.parseInt(operand); //operand1's whole number
+			int op1n = 0;
+			int op1d = 0;
+		}
 		return operand2;
 	}
 
