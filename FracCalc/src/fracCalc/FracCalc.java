@@ -8,15 +8,11 @@ public class FracCalc
 		// with that input, printing the result
 		Scanner console = new Scanner(System.in);
 		String input = console.nextLine();
-		if (input.equals("quit")) //while Statements, then exit when user types "quit"
+		while (input.equals("quit")) //while Statements, then exit when user types "quit"
 		{
-			return;
-		}
-		else //POSSIBLY FIX THIS??? ????????????????????????????
-		{
-			produceAnswer(input);
 			System.out.println(produceAnswer(input));
 		}
+		return;
 	}
 	// ** IMPORTANT ** DO NOT DELETE THIS METHOD.
 	// ** IMPORTANT ** DO NOT CHANGE THE SIGNATURE OF THIS METHOD.
