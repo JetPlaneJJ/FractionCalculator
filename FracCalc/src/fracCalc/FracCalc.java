@@ -8,7 +8,7 @@ public class FracCalc
 		// with that input, printing the result
 		Scanner console = new Scanner(System.in);
 		String input = console.nextLine();
-		while (input.equals("quit")) //while Statements, then exit when user types "quit"
+		while (!input.equals("quit")) //while Statements, then exit when user types "quit"
 		{
 			System.out.println(produceAnswer(input));
 		}
