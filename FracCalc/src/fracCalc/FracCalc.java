@@ -53,24 +53,50 @@ public class FracCalc
 		//operand1 section
 		if (operand.indexOf("_") > -1) //if mixed fraction
 		{
-			int op1w = 0;
-			int op1n = Integer.parseInt(operand.substring(0));
-			int op1d = 0;
+			int op1w = Integer.parseInt(operand.substring(0, operand.indexOf("_")));
+			int op1n = Integer.parseInt(operand.substring(operand.indexOf("_") + 1, operand.indexOf("/")));
+			int op1d = Integer.parseInt(operand.substring(operand.indexOf("/") + 1, operand.length()));
 		}
 		else if (operand.indexOf("_") == -1 && operand.indexOf("/") != 0) //if the format is like: 10/4, not a mixed fraction
 		{
 			int slash = operand.indexOf("/");
 			int op1w = 0;
-			int op1n = Integer.parseInt(operand.substring(0));
-			int op1d = 0;
+			int op1n = Integer.parseInt(operand.substring(0, slash));
+			int op1d = Integer.parseInt(operand.substring(operand.charAt(slash + 1), operand.length()));
 		}
 		else //first operand if only whole number
 		{
 			int op1w = Integer.parseInt(operand); //operand1's whole number
 			int op1n = 0;
-			int op1d = 0;
+			int op1d = 1;
 		}
-		return operand2;
+		
+		//operand2 section
+		int op2w;
+		int op2n;
+		int op2d
+		if (operand2.indexOf("_") > -1) //if mixed fraction
+		{
+			op2w = Integer.parseInt(operand.substring(0, operand.indexOf("_")));
+			op2n = Integer.parseInt(operand.substring(operand.indexOf("_") + 1, operand.indexOf("/")));
+			op2d = Integer.parseInt(operand.substring(operand.indexOf("/") + 1, operand.length()));
+		}
+		else if (operand.indexOf("_") == -1 && operand.indexOf("/") != 0) //if the format is like: 10/4, not a mixed fraction
+		{
+			int slash = operand.indexOf("/");
+			op2w = 0;
+			op2n = Integer.parseInt(operand.substring(0, slash));
+			op2d = Integer.parseInt(operand.substring(operand.charAt(slash + 1), operand.length()));
+		}
+		else //first operand if only whole number
+		{
+			op2w = Integer.parseInt(operand); //operand1's whole number
+			op2n = 0;
+			op2d = 1;
+		}
+		
+		String op2result = "whole:" + op2w + " numerator:" + op2n + " denominator:" + op2d;
+		return op2result;
 	}
 
 	// TODO: Fill in the space below with any helper methods that you think you will need
