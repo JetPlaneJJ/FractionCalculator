@@ -6,18 +6,17 @@ public class FracCalc
 	{
 		// TODO: Read the input from the user and call produceAnswer
 		// with that input, printing the result
-		int count = 1;
 		Scanner console = new Scanner(System.in);
-		while (count > 0) //while Statements, then exit when user types "quit"
+		for (int count = 0; count < 1; count--)
 		{
 			String input = console.nextLine();
-			if (!input.equals("quit"))
+			if (input.equals("quit"))
 			{
-				System.out.println(produceAnswer(input));
+				count = 2;
 			}
 			else
 			{
-				count = 0;
+				System.out.println(produceAnswer(input));
 			}
 		}
 		return;
@@ -42,14 +41,13 @@ public class FracCalc
 		// the first operand (fraction), the operator (+ - * /), and the second operand (fraction).
 		// Each of these Strings should be stored in variables inside produceAnswer.  
 		
-		//Checkpoint 1 stuff
+		// !!!! Checkpoint 1 stuff !!!!
 		int space = input.indexOf(" ");
 		String operand = input.substring(0, space+1);	
 		String operator = input.substring(space + 1, space + 3); 
 		String operand2 = input.substring(space + 3, input.length());
 		
-		//Checkpoint 2 stuff
-		
+		// !!!! Checkpoint 2 stuff !!!!
 		//operand1 section
 		if (operand.indexOf("_") > -1) //if mixed fraction
 		{
@@ -57,7 +55,7 @@ public class FracCalc
 			int op1n = Integer.parseInt(operand.substring(operand.indexOf("_") + 1, operand.indexOf("/")));
 			int op1d = Integer.parseInt(operand.substring(operand.indexOf("/") + 1, operand.length()));
 		}
-		else if (operand.indexOf("_") == -1 && operand.indexOf("/") != 0) //if the format is like: 10/4, not a mixed fraction
+		else if (operand.indexOf("_") == -1 && operand.indexOf("/") > 0) //if the format is like: 10/4, not a mixed fraction
 		{
 			int slash = operand.indexOf("/");
 			int op1w = 0;
@@ -81,7 +79,7 @@ public class FracCalc
 			op2n = Integer.parseInt(operand.substring(operand.indexOf("_") + 1, operand.indexOf("/")));
 			op2d = Integer.parseInt(operand.substring(operand.indexOf("/") + 1, operand.length()));
 		}
-		else if (operand.indexOf("_") == -1 && operand.indexOf("/") != 0) //if the format is like: 10/4, not a mixed fraction
+		else if (operand.indexOf("_") == -1 && operand.indexOf("/") > 0) //if the format is like: 10/4, not a mixed fraction
 		{
 			int slash = operand.indexOf("/");
 			op2w = 0;
