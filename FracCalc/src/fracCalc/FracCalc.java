@@ -6,11 +6,19 @@ public class FracCalc
 	{
 		// TODO: Read the input from the user and call produceAnswer
 		// with that input, printing the result
+		int count = 1;
 		Scanner console = new Scanner(System.in);
-		String input = console.nextLine();
-		while (!input.equals("quit")) //while Statements, then exit when user types "quit"
+		while (count > 0) //while Statements, then exit when user types "quit"
 		{
-			System.out.println(produceAnswer(input));
+			String input = console.nextLine();
+			if (!input.equals("quit"))
+			{
+				System.out.println(produceAnswer(input));
+			}
+			else
+			{
+				count = 0;
+			}
 		}
 		return;
 	}
