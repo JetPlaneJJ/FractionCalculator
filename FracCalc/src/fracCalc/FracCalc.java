@@ -79,7 +79,7 @@ public class FracCalc
 		int op2d;
 		if (operand2.indexOf("_") > 0) //if mixed fraction
 		{
-			op2w = Integer.parseInt(operand2.substring(0, operand.indexOf("_")));
+			op2w = Integer.parseInt(operand2.substring(0, operand2.indexOf("_")));
 			op2n = Integer.parseInt(operand2.substring(operand2.indexOf("_") + 1, operand2.indexOf("/")));
 			op2d = Integer.parseInt(operand2.substring(operand2.indexOf("/") + 1, operand2.length()));
 		}
