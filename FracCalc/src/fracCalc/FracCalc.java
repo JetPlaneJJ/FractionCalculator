@@ -64,7 +64,7 @@ public class FracCalc
 			int slash = operand.indexOf("/");
 			op1w = 0;
 			op1n = Integer.parseInt(operand.substring(0, slash));
-			op1d = Integer.parseInt(operand.substring(operand.charAt(slash + 1), operand.length()));
+			op1d = Integer.parseInt(operand.substring(slash + 1, operand.length()));
 		}
 		else //first operand if only whole number
 		{
@@ -79,20 +79,20 @@ public class FracCalc
 		int op2d;
 		if (operand2.indexOf("_") > 0) //if mixed fraction
 		{
-			op2w = Integer.parseInt(operand.substring(0, operand.indexOf("_")));
-			op2n = Integer.parseInt(operand.substring(operand.indexOf("_") + 1, operand.indexOf("/")));
-			op2d = Integer.parseInt(operand.substring(operand.indexOf("/") + 1, operand.length()));
+			op2w = Integer.parseInt(operand2.substring(0, operand.indexOf("_")));
+			op2n = Integer.parseInt(operand2.substring(operand2.indexOf("_") + 1, operand2.indexOf("/")));
+			op2d = Integer.parseInt(operand2.substring(operand2.indexOf("/") + 1, operand2.length()));
 		}
-		else if (operand.indexOf("_") == -1 && operand.indexOf("/") > 0) //if the format is like: 10/4, not a mixed fraction
+		else if (operand2.indexOf("_") == -1 && operand2.indexOf("/") > 0) //if the format is like: 10/4, not a mixed fraction
 		{
-			int slash = operand.indexOf("/");
+			int slash = operand2.indexOf("/");
 			op2w = 0;
-			op2n = Integer.parseInt(operand.substring(0, slash));
-			op2d = Integer.parseInt(operand.substring(operand.charAt(slash + 1), operand.length()));
+			op2n = Integer.parseInt(operand2.substring(0, slash));
+			op2d = Integer.parseInt(operand2.substring(slash + 1, operand2.length()));
 		}
 		else //second operand if only whole number
 		{
-			op2w = Integer.parseInt(operand); //operand2 whole number
+			op2w = Integer.parseInt(operand2); //operand2's whole number
 			op2n = 0;
 			op2d = 1;
 		}
