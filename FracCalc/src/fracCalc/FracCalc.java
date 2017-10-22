@@ -99,6 +99,9 @@ public class FracCalc
 		
 		String op2result = "whole:" + op2w + " numerator:" + op2n + " denominator:" + op2d;
 		return op2result;
+		
+		//CH3 stuff
+		
 	}
 
 	// TODO: Fill in the space below with any helper methods that you think you will need
