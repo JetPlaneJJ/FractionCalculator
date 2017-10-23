@@ -98,9 +98,29 @@ public class FracCalc
 		}
 		
 		String op2result = "whole:" + op2w + " numerator:" + op2n + " denominator:" + op2d;
-		return op2result;
 		
 		//CH3 stuff
+		String finalanswer = "";
+		
+		if (input.indexOf("*") != 0)
+		{
+			
+			int newnum = op1w*op2w;
+			int newdenom = op1d*op2d;
+			finalanswer = newnum + "/" + newdenom;
+		}
+		else if (input.indexOf("/") != 0)
+		{
+			int newnum = op1w*op2d;
+			int newdenom = op1d*op2w;
+			finalanswer = newnum + "/" + newdenom;
+		}
+		else if (input.indexOf("+") != 0)
+		{
+			
+		}
+		
+		return finalanswer;
 		
 	}
 
