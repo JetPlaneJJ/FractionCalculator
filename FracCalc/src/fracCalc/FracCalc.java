@@ -102,22 +102,39 @@ public class FracCalc
 		//CH3 stuff
 		String finalanswer = "";
 		
-		if (input.indexOf("*") != 0)
+		if (input.indexOf("*") != 0) //multiplication
 		{
 			
 			int newnum = op1w*op2w;
 			int newdenom = op1d*op2d;
 			finalanswer = newnum + "/" + newdenom;
 		}
-		else if (input.indexOf("/") != 0)
+		else if (input.indexOf("/") != 0) //division
 		{
 			int newnum = op1w*op2d;
 			int newdenom = op1d*op2w;
 			finalanswer = newnum + "/" + newdenom;
 		}
-		else if (input.indexOf("+") != 0)
+		else if (input.indexOf("+") != 0) //addition
 		{
+			if (op1w == 0) //if there is a whole number in mixed fraction
+			{
+				op1n = (op1d*op1w) + op1n;
+			}
 			
+			if (op2w == 0)
+			{
+				
+			}
+			int newnum = ((op1n*op2d) + (op2n*op1d));
+			int newdenom = 0;
+			finalanswer = newnum + "+" + newdenom;
+		}
+		else //subtraction
+		{
+			int newnum = 0;
+			int newdenom = 0;
+			finalanswer = newnum + "-" + newdenom;
 		}
 		
 		return finalanswer;
