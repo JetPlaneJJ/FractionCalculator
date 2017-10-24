@@ -117,17 +117,17 @@ public class FracCalc
 		}
 		else if (input.indexOf("+") != 0) //addition
 		{
-			if (op1w == 0) //if there is a whole number in mixed fraction
+			if (op1w != 0 && operand.indexOf("_") != -1) //if there is a whole number in mixed fraction
 			{
 				op1n = (op1d*op1w) + op1n;
 			}
 			
-			if (op2w == 0)
+			if (op2w != 0 && operand2.indexOf("_") != -1) //if there is a whole number in mixed fraction
 			{
-				
+				op1n = (op1d*op1w) + op1n;
 			}
 			int newnum = ((op1n*op2d) + (op2n*op1d));
-			int newdenom = 0;
+			int newdenom = op1d*op2d;
 			finalanswer = newnum + "+" + newdenom;
 		}
 		else //subtraction
