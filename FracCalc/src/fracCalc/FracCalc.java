@@ -5,8 +5,6 @@ public class FracCalc
 	public static void main(String[] args)
 	{
 		System.out.println("Type an expression: ");
-		// TODO: Read the input from the user and call produceAnswer
-		// with that input, printing the result
 		Scanner console = new Scanner(System.in);
 		for (int count = 0; count < 1; count--)
 		{
@@ -37,16 +35,14 @@ public class FracCalc
 	
 	public static String produceAnswer(String input)
 	{
-		// TODO: Implement this method to produce and return the solution to the input
-		// produceAnswer breaks up that line of input into three Strings
-		// the first operand (fraction), the operator (+ - * /), and the second operand (fraction).
-		// Each of these Strings should be stored in variables inside produceAnswer.  
-		
 		// !!!! Checkpoint 1 stuff !!!!
 		int space = input.indexOf(" ");
 		String operand = input.substring(0, space);	
 		String operator = input.substring(space + 1, space + 3); 
 		String operand2 = input.substring(space + 3, input.length());
+		
+		
+		
 		
 		// !!!! Checkpoint 2 stuff !!!!
 		//operand1 section
@@ -72,7 +68,6 @@ public class FracCalc
 			op1n = 0;
 			op1d = 1;
 		}
-		
 		//operand2 section
 		int op2w;
 		int op2n;
@@ -96,47 +91,56 @@ public class FracCalc
 			op2n = 0;
 			op2d = 1;
 		}
-		
 		String op2result = "whole:" + op2w + " numerator:" + op2n + " denominator:" + op2d;
 		
-		//Checkpoint 3 stuff
-		String finalanswer = "";
 		
-		if (operand.indexOf("_") != -1) //Setting the mixed fractions to just fractions, CHECKED
+		
+		// !!!Checkpoint 3 stuff!!!
+		String result = null;
+		
+		if (operand.indexOf("_") != -1) //if operand1 is mixed fraction
 		{
-			op1n = (op1w*op1d) + op1n;
+			op1w = ((op1w*op1d) + op1n); 
 		}
-		if (operand2.indexOf("_") != -1)
+		else if (operand.indexOf("/") != -1) //if op1 is fraction
 		{
-			op2n = (op2w*op2d) + op2n;
+			op1w = op1n;
+		}
+		if (operand2.indexOf("_") != -1) //if op2 is mix frac
+		{
+			op2w = (op2w*op2d + op2n); 
+		}
+		else if (operand2.indexOf("/") != -1) //if op2 is just a frac
+		{
+			op2w = op2n;
 		}
 		
-		if (input.indexOf("*") != 0) //multiplication, CHECKED but not simplified
+		if (operator.indexOf("*") != -1) //multiplication FIXED
 		{
-			int newnum = op1n*op2n;
+			int newnum = op1w*op2w;
 			int newdenom = op1d*op2d;
-			finalanswer = newnum + "/" + newdenom;
+			result = newnum + "/" + newdenom;
 		}
-		else if (input.indexOf("/") != 0) //division, CHECKED but not simplified
+		else if (operator.indexOf("/") != -1) //division FIXED
 		{
-			int newnum = op1n*op2d;
-			int newdenom = op1d*op2n;
-			finalanswer = newnum + "/" + newdenom;
+			int newnum = op1w*op2d;
+			int newdenom = op1d*op2w; //ex: 22 / 2, newnum = 22*1, newdemon = 1*2 --> 22 / 2
+			result = newnum + "/" + newdenom;
 		}
-		else if (input.indexOf("+") != 0) //addition
+		else if (operator.indexOf("+") != -1) //addition FIXED
 		{
-			int newnum = ((op1n*op2d) + (op2n*op1d)); 
+			int newnum = ((op1w*op2d) + (op2w*op1d)); 
 			int newdenom = op1d*op2d; //lowest common denominator, example: 1/2 + 1/2 = (2+2)/4 = 4/4 
-			finalanswer = newnum + "/" + newdenom; 
+			result = newnum + "/" + newdenom;
 		}
 		else //subtraction
 		{
-			int newnum = ((op1n*op2d) - (op2n*op1d)); 
+			int newnum = ((op1w*op2d) - (op2w*op1d)); //ex: 222 - 0 = ((222*1) - (0*1)) = 222
 			int newdenom = op1d*op2d; //lowest common denominator, example: 1/2 - 1/2 = (2-2)/4 = 0/4 = 0
-			finalanswer = newnum + "/" + newdenom; 
+			result = newnum + "/" + newdenom; 
 		}
 		
-		return finalanswer;
+		return result;
 		
 	}
 
