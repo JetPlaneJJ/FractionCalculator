@@ -99,42 +99,41 @@ public class FracCalc
 		
 		String op2result = "whole:" + op2w + " numerator:" + op2n + " denominator:" + op2d;
 		
-		//CH3 stuff
+		//Checkpoint 3 stuff
 		String finalanswer = "";
 		
-		if (input.indexOf("*") != 0) //multiplication
+		if (operand.indexOf("_") != -1) //Setting the mixed fractions to just fractions, CHECKED
 		{
-			
-			int newnum = op1w*op2w;
+			op1n = (op1w*op1d) + op1n;
+		}
+		if (operand2.indexOf("_") != -1)
+		{
+			op2n = (op2w*op2d) + op2n;
+		}
+		
+		if (input.indexOf("*") != 0) //multiplication, CHECKED but not simplified
+		{
+			int newnum = op1n*op2n;
 			int newdenom = op1d*op2d;
 			finalanswer = newnum + "/" + newdenom;
 		}
-		else if (input.indexOf("/") != 0) //division
+		else if (input.indexOf("/") != 0) //division, CHECKED but not simplified
 		{
-			int newnum = op1w*op2d;
-			int newdenom = op1d*op2w;
+			int newnum = op1n*op2d;
+			int newdenom = op1d*op2n;
 			finalanswer = newnum + "/" + newdenom;
 		}
 		else if (input.indexOf("+") != 0) //addition
 		{
-			if (op1w != 0 && operand.indexOf("_") != -1) //if there is a whole number in mixed fraction
-			{
-				op1n = (op1d*op1w) + op1n;
-			}
-			
-			if (op2w != 0 && operand2.indexOf("_") != -1) //if there is a whole number in mixed fraction
-			{
-				op1n = (op1d*op1w) + op1n;
-			}
-			int newnum = ((op1n*op2d) + (op2n*op1d));
-			int newdenom = op1d*op2d;
-			finalanswer = newnum + "+" + newdenom;
+			int newnum = ((op1n*op2d) + (op2n*op1d)); 
+			int newdenom = op1d*op2d; //lowest common denominator, example: 1/2 + 1/2 = (2+2)/4 = 4/4 
+			finalanswer = newnum + "/" + newdenom; 
 		}
 		else //subtraction
 		{
-			int newnum = 0;
-			int newdenom = 0;
-			finalanswer = newnum + "-" + newdenom;
+			int newnum = ((op1n*op2d) - (op2n*op1d)); 
+			int newdenom = op1d*op2d; //lowest common denominator, example: 1/2 - 1/2 = (2-2)/4 = 0/4 = 0
+			finalanswer = newnum + "/" + newdenom; 
 		}
 		
 		return finalanswer;
