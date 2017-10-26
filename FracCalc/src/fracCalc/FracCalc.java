@@ -1,5 +1,6 @@
 package fracCalc;
 import java.util.Scanner;
+import Math;
 public class FracCalc
 {
 	public static void main(String[] args)
@@ -96,21 +97,36 @@ public class FracCalc
 		
 		
 		// !!!Checkpoint 3 stuff!!!
+					//TODO: negative mixed fractions are failing...
 		String result = null;
-		
 		if (operand.indexOf("_") != -1) //if operand1 is mixed fraction
 		{
-			op1w = ((op1w*op1d) + op1n); 
+			if (operand.indexOf("-") != -1) //checks if it is a negative
+			{
+				op1w = ((op1w*op1d)*-1 + op1n) * -1; 
+			}
+			else
+			{
+				op1w = op1w*op1d + op1n;
+			}
 		}
 		else if (operand.indexOf("/") != -1) //if op1 is fraction
 		{
 			op1w = op1n;
 		}
-		if (operand2.indexOf("_") != -1) //if op2 is mix frac
+		
+		if (operand2.indexOf("_") != -1) //if op2 is mixed fraction
 		{
-			op2w = (op2w*op2d + op2n); 
+			if (operand2.indexOf("-") != -1)
+			{
+				op2w = ((op2w*op2d)*-1 + op2n) * -1;
+			}
+			else
+			{
+				op2w = op2w*op2d + op2n; 
+			}
 		}
-		else if (operand2.indexOf("/") != -1) //if op2 is just a frac
+		else if (operand2.indexOf("/") != -1) //if op2 is just a fraction
 		{
 			op2w = op2n;
 		}
