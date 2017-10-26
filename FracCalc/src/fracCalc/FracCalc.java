@@ -1,6 +1,5 @@
 package fracCalc;
 import java.util.Scanner;
-import Math;
 public class FracCalc
 {
 	public static void main(String[] args)
