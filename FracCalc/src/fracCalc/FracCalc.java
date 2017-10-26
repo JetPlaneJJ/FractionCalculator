@@ -6,7 +6,8 @@ public class FracCalc
 	{
 		System.out.println("Type an expression: ");
 		Scanner console = new Scanner(System.in);
-		for (int count = 0; count < 1; count--)
+		int count = 0;
+		while (count < 1)
 		{
 			String input = console.nextLine();
 			if (input.equals("quit"))
@@ -96,7 +97,6 @@ public class FracCalc
 		
 		
 		// !!!Checkpoint 3 stuff!!!
-					//TODO: negative mixed fractions are failing...
 		String result = null;
 		if (operand.indexOf("_") != -1) //if operand1 is mixed fraction
 		{
