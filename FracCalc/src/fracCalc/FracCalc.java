@@ -127,32 +127,51 @@ public class FracCalc
 		}
 		
 		//actually doing the math Section
+		int newnum;
+		int newdenom;
 		if (operator.indexOf("*") != -1) //multiplication 
 		{
-			int newnum = op1w*op2w;
-			int newdenom = op1d*op2d;
+			newnum = op1w*op2w;
+			newdenom = op1d*op2d;
 			result = newnum + "/" + newdenom;
 		}
 		else if (operator.indexOf("/") != -1) //division 
 		{
-			int newnum = op1w*op2d;
-			int newdenom = op1d*op2w; //ex: 22 / 2, newnum = 22*1, newdemon = 1*2 --> 22 / 2
+			newnum = op1w*op2d;
+			newdenom = op1d*op2w; //ex: 22 / 2, newnum = 22*1, newdemon = 1*2 --> 22 / 2
 			result = newnum + "/" + newdenom;
 		}
 		else if (operator.indexOf("+") != -1) //addition FIXED
 		{
-			int newnum = ((op1w*op2d) + (op2w*op1d)); 
-			int newdenom = op1d*op2d; //lowest common denominator, example: 1/2 + 1/2 = (2+2)/4 = 4/4 
+			newnum = ((op1w*op2d) + (op2w*op1d)); 
+			newdenom = op1d*op2d; //lowest common denominator, example: 1/2 + 1/2 = (2+2)/4 = 4/4 
 			result = newnum + "/" + newdenom;
 		}
 		else //subtraction
 		{
-			int newnum = ((op1w*op2d) - (op2w*op1d)); //ex: 222 - 0 = ((222*1) - (0*1)) = 222
-			int newdenom = op1d*op2d; //lowest common denominator, example: 1/2 - 1/2 = (2-2)/4 = 0/4 = 0
+			newnum = ((op1w*op2d) - (op2w*op1d)); //ex: 222 - 0 = ((222*1) - (0*1)) = 222
+			newdenom = op1d*op2d; //lowest common denominator, example: 1/2 - 1/2 = (2-2)/4 = 0/4 = 0
 			result = newnum + "/" + newdenom; 
 		}
 		
-		return result;
+// !!!final checkpoint!!! //
+		if (newnum < newdenom) //if numerator smaller than denominator
+		{
+			return result;
+		}
+		else if (newnum % newdenom == 0) //if there is no more to simplify
+		{
+			result = newnum/newdenom + " ";
+			return result;
+		}
+		else //if not simplified
+		{
+			op1w = newnum/newdenom;
+			op1d = newdenom;
+			op1n = newnum;
+			result = op1w + "_" + op1n + "/" + op1d;
+			return result;
+		}
 	}
 
 	// TODO: Fill in the space below with any helper methods that you think you will need
