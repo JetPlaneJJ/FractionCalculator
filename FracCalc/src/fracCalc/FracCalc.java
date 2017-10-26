@@ -161,7 +161,7 @@ public class FracCalc
 		}
 		else if (newnum % newdenom == 0) //if there is no more to simplify
 		{
-			result = newnum/newdenom + " ";
+			result = newnum/newdenom + "";
 			return result;
 		}
 		else //if not simplified
