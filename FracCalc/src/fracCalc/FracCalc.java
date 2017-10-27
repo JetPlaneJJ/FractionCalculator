@@ -155,13 +155,23 @@ public class FracCalc
 		}
 		
 // !!!final checkpoint!!! //
-		if (newnum < newdenom) //if numerator smaller than denominator
+		if (Math.abs(newnum) < newdenom) //if numerator smaller than denominator
 		{
+			if (newnum == 0)
+			{
+				result = 0 + "";
+			}
+			return result;
+		}
+		else if (newnum/newdenom == 0) //0 divided by anything
+		{
+			result = 0 + "";
 			return result;
 		}
 		else if (newnum % newdenom == 0) //if there is no more to simplify
 		{
-			result = newnum/newdenom + "";
+			newnum = newnum/newdenom;
+			result = newnum + "";
 			return result;
 		}
 		else //if not simplified
@@ -170,6 +180,7 @@ public class FracCalc
 			op1d = newdenom;
 			op1n = newnum%newdenom;
 			result = op1w + "_" + op1n + "/" + op1d;
+			
 			return result;
 		}
 	}
