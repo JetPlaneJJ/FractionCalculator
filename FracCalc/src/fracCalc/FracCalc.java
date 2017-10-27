@@ -168,7 +168,7 @@ public class FracCalc
 		{
 			op1w = newnum/newdenom;
 			op1d = newdenom;
-			op1n = newnum;
+			op1n = newnum%newdenom;
 			result = op1w + "_" + op1n + "/" + op1d;
 			return result;
 		}
