@@ -162,7 +162,7 @@ public class FracCalc
 			int whole = 0;
 			if (newnum < 0 || newdenom < 0) // if the overall number is negative
 			{
-				for (int x = n/2; x > 2; x--) //added more simplify section 11/3/2017
+				for (int x = n; x >= 2; x--) //added more simplify section 11/3/2017
 				{
 					if (n % x == 0 && d % x == 0)
 					{
@@ -191,7 +191,7 @@ public class FracCalc
 			}
 			else //if newnum is positive
 			{
-				for (int x = n/2; x > 2; x--) //added more simplify section 11/3/2017
+				for (int x = n; x >= 2; x--) //added more simplify section 11/3/2017
 				{
 					if (n % x == 0 && newdenom % x == 0)
 					{
