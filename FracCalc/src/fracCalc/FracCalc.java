@@ -145,36 +145,36 @@ public class FracCalc
 		}
 		
 // !!!final checkpoint!!! //
-		if (newnum < 0 && newdenom < 0)
-		{
-			newnum = Math.abs(newnum);
-			newdenom = Math.abs(newdenom);
-		}
+		int n = Math.abs(newnum);
+		int d = Math.abs(newdenom);
+		
 		if (newnum == 0) //0 divided by anything
 		{
 			result = 0 + "";
 			return result;
 		}
-		if (newdenom == 1 || newdenom == newnum) // just a whole number
+		else if (newdenom == 1 || newdenom == newnum) // just a whole number
 		{
-			return newnum / newdenom + "";
-		}
-		if (newdenom % newnum == 0) // if something like -5/30 --> -1/6
-		{
-			newnum = newnum/newnum;
-			newdenom = newdenom/newnum;
-			return newnum + "/" + newdenom;
+			return n / d + "";
 		}
 		else
 		{
 			int whole = 0;
-			if (newnum < 0) // if the new numerator is a negative
+			if (newnum < 0 || newdenom < 0) // if the overall number is negative
 			{
-				int n = Math.abs(newnum); //turns into positive temporarily
-				while (n >= newdenom) //simplifying
+				for (int x = n/2; x > 2; x--) //added more simplify section 11/3/2017
+				{
+					if (n % x == 0 && d % x == 0)
+					{
+						n /= x;
+						d /= x;
+						x++;
+					}
+				}
+				while (n >= d) //simplifying
 				{
 					whole++;
-					n -= newdenom;
+					n -= d;
 				}
 				if (whole == 0)
 				{ 
@@ -186,24 +186,24 @@ public class FracCalc
 				}
 				else
 				{
-					return "-"+ whole + "_" + n + "/" + newdenom; //puts the negative back
+					return "-"+ whole + "_" + n + "/" + d; //puts the negative back
 				}
 			}
 			else //if newnum is positive
 			{
+				for (int x = n/2; x > 2; x--) //added more simplify section 11/3/2017
+				{
+					if (n % x == 0 && newdenom % x == 0)
+					{
+						n /= x;
+						newdenom /= x;
+						x++;
+					}
+				}
 				while (newnum >= newdenom) //simplifying
 				{
 					whole++;
 					newnum -= newdenom;
-					for (int x = newnum/2; x > 2; x--) //added section
-					{
-						if (newnum % x == 0 && newdenom % x == 0)
-						{
-							newnum /= x;
-							newdenom /= x;
-							x++;
-						}
-					}
 				}
 				if (newnum == 0)
 				{
@@ -221,23 +221,6 @@ public class FracCalc
 			
 		}
 	
-		//POSSIBLE WRONG STUFF 
-		//else if (newnum % newdenom == 0) //if there is no more to simplify
-		//{
-			//newnum = newnum/newdenom;
-			//result = newnum + "";
-			//return result;
-		//}
-		
-		//else //if not simplified
-		//{
-			//op1w = newnum/newdenom;
-			//op1d = newdenom;
-			//op1n = Math.abs(newnum%newdenom);
-			//result = op1w + "_" + op1n + "/" + op1d;
-			
-			//return result;
-		//}
 	}
 
 	// TODO: Fill in the space below with any helper methods that you think you will need
