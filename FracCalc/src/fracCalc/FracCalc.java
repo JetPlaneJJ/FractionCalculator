@@ -145,14 +145,6 @@ public class FracCalc
 		}
 		
 // !!!final checkpoint!!! //
-		//if (Math.abs(newnum) < newdenom) //if numerator smaller than denominator
-		//{
-			//if (newnum == 0)
-			//{
-				//result = 0 + "";
-			//}
-			//return result;
-		//}
 		if (newnum < 0 && newdenom < 0)
 		{
 			newnum = Math.abs(newnum);
@@ -163,9 +155,9 @@ public class FracCalc
 			result = 0 + "";
 			return result;
 		}
-		if (newdenom == 1) // just a whole number
+		if (newdenom == 1 || newdenom == newnum) // just a whole number
 		{
-			return newnum + "";
+			return newnum / newdenom + "";
 		}
 		if (newdenom % newnum == 0) // if something like -5/30 --> -1/6
 		{
