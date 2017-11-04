@@ -195,6 +195,15 @@ public class FracCalc
 				{
 					whole++;
 					newnum -= newdenom;
+					for (int x = newnum/2; x > 2; x--) //added section
+					{
+						if (newnum % x == 0 && newdenom % x == 0)
+						{
+							newnum /= x;
+							newdenom /= x;
+							x++;
+						}
+					}
 				}
 				if (newnum == 0)
 				{
