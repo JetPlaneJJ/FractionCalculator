@@ -22,14 +22,6 @@ public class FracCalc
 		return;
 	}
 	
-	// ** IMPORTANT ** DO NOT DELETE THIS METHOD.
-	// ** IMPORTANT ** DO NOT CHANGE THE SIGNATURE OF THIS METHOD.
-	// This method will be used to test your code.  It takes a String parameter
-	// and RETURNS (not prints) the result
-	// Parameter is a fraction string that needs to be evaluated.  For your program, this will be
-	// the user input obtained by main.   
-	// The method should return the result of the fraction after it has been calculated
-	//      e.g. return ==> "1_1/4"
 	public static String produceAnswer(String input)
 	{
 	// !!!! Checkpoint 1 stuff !!!! //
@@ -37,8 +29,6 @@ public class FracCalc
 		String operand = input.substring(0, space);	
 		String operator = input.substring(space + 1, space + 3); 
 		String operand2 = input.substring(space + 3, input.length());
-		
-		
 		
 		
 	// !!!! Checkpoint 2 stuff !!!! //
@@ -155,34 +145,98 @@ public class FracCalc
 		}
 		
 // !!!final checkpoint!!! //
-		if (Math.abs(newnum) < newdenom) //if numerator smaller than denominator
+		//if (Math.abs(newnum) < newdenom) //if numerator smaller than denominator
+		//{
+			//if (newnum == 0)
+			//{
+				//result = 0 + "";
+			//}
+			//return result;
+		//}
+		if (newnum < 0 && newdenom < 0)
 		{
-			if (newnum == 0)
-			{
-				result = 0 + "";
-			}
-			return result;
+			newnum = Math.abs(newnum);
+			newdenom = Math.abs(newdenom);
 		}
-		else if (newnum/newdenom == 0) //0 divided by anything
+		if (newnum == 0) //0 divided by anything
 		{
 			result = 0 + "";
 			return result;
 		}
-		else if (newnum % newdenom == 0) //if there is no more to simplify
+		if (newdenom == 1) // just a whole number
 		{
-			newnum = newnum/newdenom;
-			result = newnum + "";
-			return result;
+			return newnum + "";
 		}
-		else //if not simplified
+		if (newdenom % newnum == 0) // if something like -5/30 --> -1/6
 		{
-			op1w = newnum/newdenom;
-			op1d = newdenom;
-			op1n = Math.abs(newnum%newdenom);
-			result = op1w + "_" + op1n + "/" + op1d;
+			newnum = newnum/newnum;
+			newdenom = newdenom/newnum;
+			return newnum + "/" + newdenom;
+		}
+		else
+		{
+			int whole = 0;
+			if (newnum < 0) // if the new numerator is a negative
+			{
+				int n = Math.abs(newnum); //turns into positive temporarily
+				while (n >= newdenom) //simplifying
+				{
+					whole++;
+					n -= newdenom;
+				}
+				if (whole == 0)
+				{ 
+					return "-" + n + "/" + newdenom; //puts the negative back
+				}
+				else if (n == 0) 
+				{
+					return "-" + whole;
+				}
+				else
+				{
+					return "-"+ whole + "_" + n + "/" + newdenom; //puts the negative back
+				}
+			}
+			else //if newnum is positive
+			{
+				while (newnum >= newdenom) //simplifying
+				{
+					whole++;
+					newnum -= newdenom;
+				}
+				if (newnum == 0)
+				{
+					return whole + "";
+				}
+				else if (whole == 0)
+				{
+					return newnum + "/" + newdenom; 
+				}
+				else
+				{
+					return whole + "_" + newnum + "/" + newdenom; 
+				}
+			}
 			
-			return result;
 		}
+	
+		//POSSIBLE WRONG STUFF 
+		//else if (newnum % newdenom == 0) //if there is no more to simplify
+		//{
+			//newnum = newnum/newdenom;
+			//result = newnum + "";
+			//return result;
+		//}
+		
+		//else //if not simplified
+		//{
+			//op1w = newnum/newdenom;
+			//op1d = newdenom;
+			//op1n = Math.abs(newnum%newdenom);
+			//result = op1w + "_" + op1n + "/" + op1d;
+			
+			//return result;
+		//}
 	}
 
 	// TODO: Fill in the space below with any helper methods that you think you will need
