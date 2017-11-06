@@ -165,7 +165,7 @@ public class FracCalc
 		else
 		{
 			int whole = 0;
-				for (int x = 2; x < n; x++) //diving the regular fraction out first
+				for (int x = 2; x <= n; x++) //diving the regular fraction out first
 				{
 					if (n % x == 0 && d % x == 0) 
 					{
