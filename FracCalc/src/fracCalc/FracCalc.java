@@ -165,13 +165,13 @@ public class FracCalc
 		else
 		{
 			int whole = 0;
-				for (int x = n; x >= 2; x--) //diving the regular fraction out first
+				for (int x = 2; x < n; x++) //diving the regular fraction out first
 				{
-					if (n % x == 0 && d % x == 0)
+					if (n % x == 0 && d % x == 0) 
 					{
 						n /= x;
 						d /= x;
-						x++;
+						x--;
 					}
 				}
 				while (n >= d) //simplifying into mixed fraction
@@ -181,7 +181,7 @@ public class FracCalc
 				}
 				if (whole == 0)
 				{ 
-					return negative + n + "/" + newdenom; //puts the negative back, if applicable, final answer is just fraction
+					return negative + n + "/" + d; //puts the negative back, if applicable, final answer is just fraction
 				}
 				else if (n == 0) //whole number
 				{
