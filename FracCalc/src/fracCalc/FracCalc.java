@@ -145,24 +145,27 @@ public class FracCalc
 		}
 		
 // !!!final checkpoint!!! //
+		String negative = ""; //in case the final answer is negative
+		if (newnum < 0 && newdenom > 0 || newnum > 0 && newdenom < 0)
+		{
+			negative = "-";
+		}
 		int n = Math.abs(newnum);
 		int d = Math.abs(newdenom);
-		
-		if (newnum == 0) //0 divided by anything
+
+		if (n == 0) //0 divided by anything
 		{
 			result = 0 + "";
 			return result;
 		}
-		else if (newdenom == 1 || newdenom == newnum) // just a whole number
+		else if (d == 1 || d == n) // just a whole number
 		{
-			return n / d + "";
+			return newnum/newdenom + "";
 		}
 		else
 		{
 			int whole = 0;
-			if (newnum < 0 || newdenom < 0) // if the overall number is negative
-			{
-				for (int x = n; x >= 2; x--) //added more simplify section 11/3/2017
+				for (int x = n; x >= 2; x--) //diving the regular fraction out first
 				{
 					if (n % x == 0 && d % x == 0)
 					{
@@ -171,58 +174,25 @@ public class FracCalc
 						x++;
 					}
 				}
-				while (n >= d) //simplifying
+				while (n >= d) //simplifying into mixed fraction
 				{
 					whole++;
 					n -= d;
 				}
 				if (whole == 0)
 				{ 
-					return "-" + n + "/" + newdenom; //puts the negative back
+					return negative + n + "/" + newdenom; //puts the negative back, if applicable, final answer is just fraction
 				}
-				else if (n == 0) 
+				else if (n == 0) //whole number
 				{
-					return "-" + whole;
+					return negative + whole; 
 				}
 				else
 				{
-					return "-"+ whole + "_" + n + "/" + d; //puts the negative back
+					return negative + whole + "_" + n + "/" + d; //mixed fraction final answer
 				}
-			}
-			else //if newnum is positive
-			{
-				for (int x = n; x >= 2; x--) //added more simplify section 11/3/2017
-				{
-					if (n % x == 0 && newdenom % x == 0)
-					{
-						n /= x;
-						newdenom /= x;
-						x++;
-					}
-				}
-				while (newnum >= newdenom) //simplifying
-				{
-					whole++;
-					newnum -= newdenom;
-				}
-				if (newnum == 0)
-				{
-					return whole + "";
-				}
-				else if (whole == 0)
-				{
-					return newnum + "/" + newdenom; 
-				}
-				else
-				{
-					return whole + "_" + newnum + "/" + newdenom; 
-				}
-			}
-			
 		}
-	
 	}
-
 	// TODO: Fill in the space below with any helper methods that you think you will need
 
 }
