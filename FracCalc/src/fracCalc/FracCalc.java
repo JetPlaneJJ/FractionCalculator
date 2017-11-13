@@ -16,10 +16,20 @@ public class FracCalc
 			}
 			else
 			{
-				System.out.println(produceAnswer(input));
+				try
+				{
+					System.out.println(produceAnswer(input));
+				}
+				catch (ArithmeticException e)
+				{
+					System.out.println("ERROR: Cannot divide by zero.");
+				}
+				catch (Exception a)
+				{
+					System.out.println("ERROR: Input is in an invalid format.");
+				}
 			}
 		}
-		return;
 	}
 	
 	public static String produceAnswer(String input)
