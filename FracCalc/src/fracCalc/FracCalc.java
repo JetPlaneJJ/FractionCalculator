@@ -23,10 +23,6 @@ public class FracCalc
 					input = finalanswer + input;
 					System.out.println(finalanswer);
 				}
-				catch (ArithmeticException e)
-				{
-					System.out.println("ERROR: Cannot divide by zero.");
-				}
 				catch (Exception a)
 				{
 					System.out.println("ERROR: Invalid input.");
