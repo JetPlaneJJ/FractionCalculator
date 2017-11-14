@@ -18,7 +18,10 @@ public class FracCalc
 			{
 				try
 				{
-					System.out.println(produceAnswer(input));
+					String finalanswer = "";
+					finalanswer = produceAnswer(input);
+					input = finalanswer + input;
+					System.out.println(finalanswer);
 				}
 				catch (ArithmeticException e)
 				{
@@ -26,7 +29,7 @@ public class FracCalc
 				}
 				catch (Exception a)
 				{
-					System.out.println("ERROR: Input is in an invalid format.");
+					System.out.println("ERROR: Invalid input.");
 				}
 			}
 		}
@@ -34,14 +37,14 @@ public class FracCalc
 	
 	public static String produceAnswer(String input)
 	{
-	// !!!! Checkpoint 1 stuff !!!! //
+		String answer = "";
+// !!!! Checkpoint 1 !!!! //
 		int space = input.indexOf(" ");
 		String operand = input.substring(0, space);	
 		String operator = input.substring(space + 1, space + 3); 
-		String operand2 = input.substring(space + 3, input.length());
+		String operand2 = input.substring(space + 3);
 		
-		
-	// !!!! Checkpoint 2 stuff !!!! //
+// !!!! Checkpoint 2 !!!! //
 		//operand1 section
 		int op1w; 
 		int op1n;
@@ -91,9 +94,7 @@ public class FracCalc
 		String op2result = "whole:" + op2w + " numerator:" + op2n + " denominator:" + op2d;
 		
 		
-		
-	// !!!Checkpoint 3 stuff!!! //
-		String result = null;
+// !!!Checkpoint 3!!! //
 		//converting everything into a fraction Section
 		if (operand.indexOf("_") != -1) //if operand1 is mixed fraction
 		{
@@ -129,6 +130,7 @@ public class FracCalc
 		//actually doing the math Section
 		int newnum;
 		int newdenom;
+		String result = "";
 		if (operator.indexOf("*") != -1) //multiplication 
 		{
 			newnum = op1w*op2w;
@@ -154,7 +156,7 @@ public class FracCalc
 			result = newnum + "/" + newdenom; 
 		}
 		
-// !!!final checkpoint!!! //
+// !!!Final Checkpoint!!! //
 		String negative = ""; //in case the final answer is negative
 		if (newnum < 0 && newdenom > 0 || newnum > 0 && newdenom < 0)
 		{
@@ -165,12 +167,15 @@ public class FracCalc
 
 		if (n == 0) //0 divided by anything
 		{
-			result = 0 + "";
-			return result;
+			answer = 0 + "";
+		}
+		else if (d == 0)
+		{
+			answer = "ERROR: Cannot divide by zero.";
 		}
 		else if (d == 1 || d == n) // just a whole number
 		{
-			return newnum/newdenom + "";
+			answer = newnum/newdenom + "";
 		}
 		else
 		{
@@ -191,18 +196,17 @@ public class FracCalc
 				}
 				if (whole == 0)
 				{ 
-					return negative + n + "/" + d; //puts the negative back, if applicable, final answer is just fraction
+					answer = negative + n + "/" + d; //puts the negative back, if applicable, final answer is just fraction
 				}
 				else if (n == 0) //whole number
 				{
-					return negative + whole; 
+					answer = negative + whole;
 				}
 				else
 				{
-					return negative + whole + "_" + n + "/" + d; //mixed fraction final answer
+					answer = negative + whole + "_" + n + "/" + d; //mixed fraction final answer
 				}
 		}
-	}
-	// TODO: Make multiple operation tests
-	// TODO: error crashing extra credit
-}
+		return answer;
+	}	//end of gigantic loop
+} //end of method
